@@ -9,7 +9,7 @@ namespace ReportingService.Service
     {
 
         //private static readonly string apiBasicUri = Environment.GetEnvironmentVariable("");
-        private static readonly string apiBasicUri = "https://localhost:44352/";
+        private static readonly string apiBasicUri = "https://trackerservice.azurewebsites.net/";
         public static async Task<ResponseWrapper> Get<ResponseWrapper>(string url)
         {
 
