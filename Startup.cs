@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReportingService.Interface;
 using ReportingService.Service;
-using System;
 
 namespace ReportingService
 {
@@ -17,7 +16,7 @@ namespace ReportingService
             Configuration = configuration;
         }
 
-     
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,8 +28,7 @@ namespace ReportingService
             services.AddScoped<IReportService, ReportService>();
 
             string dbconn = Configuration.GetConnectionString("DBConnection");
-            //string dbconn = "Server=tcp:pftsql.database.windows.net;user=pft;password=Track@10421;Database=hangFire;Trusted_Connection=False;MultipleActiveResultSets=true";
-            //string dbconn = "Server=localhost;user=root;password=admin;database=tracking_service;";
+
             services.AddHangfire(x => x.UseSqlServerStorage(dbconn));
             services.AddHangfireServer();
 
