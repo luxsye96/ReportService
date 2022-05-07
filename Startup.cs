@@ -27,7 +27,7 @@ namespace ReportingService
             services.AddScoped<IForcastService, ForcastService>();
             services.AddScoped<IReportService, ReportService>();
 
-             string dbconn = Configuration.GetConnectionString("DBConnection");
+            string dbconn = Configuration.GetConnectionString("DBConnection");
             //string dbconn = "Server=tcp:pftsql.database.windows.net;user=pft;password=Track@10421;Database=hangFire;Trusted_Connection=False;MultipleActiveResultSets=true";
             //string dbconn = "Server=localhost;user=root;password=admin;database=tracking_service;";
             services.AddHangfire(x => x.UseSqlServerStorage(dbconn));
