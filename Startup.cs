@@ -17,7 +17,7 @@ namespace ReportingService
             Configuration = configuration;
         }
 
-        private const string _customTempPathResource = "CustomTempPath";
+     
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -27,10 +27,7 @@ namespace ReportingService
             services.AddMvc();
             services.AddScoped<IForcastService, ForcastService>();
             services.AddScoped<IReportService, ReportService>();
-            // Set TEMP path on current role
-            string customTempPath = RoleEnvironment.GetLocalResource(_customTempPathResource).RootPath;
-            Environment.SetEnvironmentVariable("TMP", customTempPath);
-            Environment.SetEnvironmentVariable("TEMP", customTempPath);
+
             string dbconn = Configuration.GetConnectionString("DBConnection");
             //string dbconn = "Server=tcp:pftsql.database.windows.net;user=pft;password=Track@10421;Database=hangFire;Trusted_Connection=False;MultipleActiveResultSets=true";
             //string dbconn = "Server=localhost;user=root;password=admin;database=tracking_service;";
